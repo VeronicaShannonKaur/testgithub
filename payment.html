@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Web Wallet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Web Wallet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="/accounthome.html" class="btn ">Home </a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="/purchase.html" class="btn ">Make a purchase</a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="/payment.html" class="btn "><strong>Make payment</strong></a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="/orderstatus.html" class="btn ">Check order status</a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="/receipt.html" class="btn ">View receipts</a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                            <a href="profile.html" class="btn btn-none">Profile</a>
+                        </li>
+                    </div>
+                    <div>
+                        <li class="nav-item">
+                            <button onclick="logout()" class="btn btn-danger">Logout</button>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Make payment</h2>
+                <form id="paymentForm">
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemPrice" class="form-label">Item Price</label>
+                        <input type="number" class="form-control" id="itemPrice" placeholder="Enter item price"
+                            step="0.01">
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-primary" onclick="addItem()">Add Item</button>
+                    </div>
+                    <div class="mb-3">
+                        <h4>Total: $<span id="totalCost">0.00</span></h4>
+                    </div>
+                    <div class="mb-3">
+                        <h4>Items in Cart</h4>
+                        <ul id="cartItems" class="list-group"></ul>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Select Payment Method</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="digitalPayment">
+                            <label class="form-check-label" for="digitalPayment">
+                                Digital Wallet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="savedCard">
+                            <label class="form-check-label" for="savedCard">
+                                Saved Card
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">Submit Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            alert("Logged out successfully");
+            window.location.href = "index.html";
+        }
+        let totalCost = 0.00;
+
+        function addItem() {
+            const itemName = document.getElementById('itemName').value;
+            const itemPrice = parseFloat(document.getElementById('itemPrice').value);
+
+            if (itemName && !isNaN(itemPrice) && itemPrice > 0) {
+                totalCost += itemPrice;
+                document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+
+                const cartItems = document.getElementById('cartItems');
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.innerText = `${itemName} - $${itemPrice.toFixed(2)}`;
+                cartItems.appendChild(listItem);
+
+                document.getElementById('itemName').value = '';
+                document.getElementById('itemPrice').value = '';
+            } else {
+                alert('Please enter a valid item name and price.');
+            }
+        }
+
+        document.getElementById('paymentForm').onsubmit = function (event) {
+            event.preventDefault();
+            const digitalPaymentChecked = document.getElementById('digitalPayment').checked;
+            const savedCardChecked = document.getElementById('savedCard').checked;
+
+            if (!digitalPaymentChecked && !savedCardChecked) {
+                alert('Please select a payment method.');
+                return;
+            }
+
+            alert('Payment submitted successfully!');
+
+            document.getElementById('paymentForm').reset();
+            document.getElementById('cartItems').innerHTML = '';
+            document.getElementById('totalCost').innerText = '0.00';
+            totalCost = 0.00;
+        }
+    </script>
+</body>
+
+</html>

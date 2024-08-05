@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: wheat;
+  color: wheat;
+}
+
+.container1 {
+  display: flex 100;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 16px;
+}
+
+.navbar, .container-fluid {
+  background-color:rgb(141, 13, 102);
+  color: white;
+  padding: 10px;
+}
+
+.navbar a, .btn {
+  float: right;
+  margin-right: 10px;
+  padding-right: 20px;
+  background-color: rgb(141, 13, 102);
+  color: black;
+}
+
+.btn {
+  align-self: center;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-brand {
+  color: black;
+  margin-left: -10px;
+  padding-left: 20px;
+}
+
+.card {
+  margin-top: 50px;
+  padding: 16px;
+  text-align: center;
+  background-color: wheat;
+}
+
+.card-body, .content-box {
+  background-color: wheat;
+  color: rgb(141, 13, 102);
+  padding: 10px;
+  border: 1px solid wheat;
+  text-align: center;
+}
+
+.card-img-center {
+  text-align: center;
+  color: wheat;
+  max-width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 80px;
+}
+
+.column {
+  flex: 1;
+  margin: 10px;
+  background-color: wheat;
+}
+
+.col-lg-12, .col-md-6 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-6 {
+  margin-bottom: 50px;
+}
+
+.card1, .card5 {
+  text-align: center;
+  color: rgb(141, 13, 102);
+}
+
+.card5 {
+  transition: 0.3s;
+  background-color: rgb(141, 13, 102);
+  color: wheat;
+}
+
+.h1, .h2, .h3 {
+  text-align: center;
+  color: rgb(141, 13, 102);
+}
+
+.form-check-label, #transaction-list, .wallet-info {
+  color: rgb(141, 13, 102);
+}
+
+.list-group-item {
+  background-color: wheat;
+  color: rgb(141, 13, 102);
+}
+
+/* CSS code for the slidwshow carousel */
+.slideshow {
+  position: relative;
+  max-width: 500px;
+  max-height: 50%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.slide img {
+  width: 100%;
+  height: 300px;
+  vertical-align: middle;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Styles (screen move together with the phone size)*/
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.product-image {
+  width: 60px;
+  height: 100px;
+}
+
+.viewCartButton {
+  position: absolute;
+  top: 300px;
+  right: 50px;
+  background-color: rgb(141, 13, 102);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
